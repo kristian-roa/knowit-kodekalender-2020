@@ -1,6 +1,5 @@
 import requests
 import re
-from collections import Counter
 
 
 def main():
@@ -10,16 +9,14 @@ def main():
 
     counts = []
     for string, names in words:
-        idxs = Counter()
-
         count = 0
         for name in names:
-            l_idx = []
+            idx = 0; l_idx = []
             for i, l in enumerate(string):
-                if l == name[idxs[name]].lower():
-                    idxs[name] += 1
+                if l == name[idx].lower():
+                    idx += 1
                     l_idx.append(i)
-                if idxs[name] == len(name):
+                if idx == len(name):
                     for j in l_idx[::-1]: string.pop(j)
                     count += 1
                     break
